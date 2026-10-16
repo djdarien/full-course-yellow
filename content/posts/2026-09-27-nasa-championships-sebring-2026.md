@@ -13,13 +13,13 @@ draft: true
 
 <h3>⛺ Saturday: Rolling In &amp; Setting Up Camp</h3>
 
-<p>I rolled in on Saturday [arrival time] and got camp set up under the pines. The best part? The NASA Championships were <strong>free for spectators Friday through Sunday</strong>. You just sign a waiver at the gate, with no tickets and no advance registration. That's an unbeatable deal for a weekend at one of the most famous tracks in the country.</p>
+<p>I rolled in around 5 PM Saturday evening and got camp set up under the pines. The best part? The NASA Championships were <strong>free for spectators Friday through Sunday</strong>. You just sign a waiver at the gate, with no tickets and no advance registration. That's an unbeatable deal for a weekend at one of the most famous tracks in the country.</p>
 
 <figure><img src="/assets/img/nasa-sebring-2026-campsite.jpg" alt="Campsite under tall pine trees at Sebring with a pop-up screen tent and a red car parked on the grass"><figcaption>Home base for the night: camp set up under the pines.</figcaption></figure>
 
 <p>This was the <strong>20th running</strong> of the NASA Championships, and NASA brought it back to Sebring for the first time since 2017. Drivers came in from regions all over the country, and you could feel it. Saturday was qualifying-race day, so every session mattered for Sunday's grids.</p>
 
-<p>As the sun went down, the light coming through the trees was ridiculous. Classic Sebring sunset. [What I cooked / ate Saturday night] hit the spot.</p>
+<p>As the sun went down, the light coming through the trees was ridiculous. Classic Sebring sunset. Dinner was spaghetti and meatballs at camp, and it totally hit the spot.</p>
 
 <figure><img src="/assets/img/nasa-sebring-2026-sunset-pines.jpg" alt="Golden sunset shining through pine trees beside the track fence at Sebring"><figcaption>Saturday sunset through the pines.</figcaption></figure>
 
@@ -27,7 +27,7 @@ draft: true
 
 <h3>🏁 Sunday: Championship Races from Turns 8–9</h3>
 
-<p>Sunday was championship race day, and I found a great spot <strong>between Turns 8 and 9</strong>. I could see the cars come in, sort themselves out, and fire off toward the next corner. [What made this spot great: shade, view, how close you were]</p>
+<p>Sunday started right with a camp breakfast of beef, cheese and eggs. Then it was championship race day, and I found a great spot <strong>between Turns 8 and 9</strong>. I could see the cars come in, sort themselves out, and fire off toward the next corner. What made it great? Shade and a killer view. In the Florida heat, that shade was clutch.</p>
 
 <p>The run groups were the fun part. NASA split the classes into different groups, and each one had its own flavor. You'd get Corvettes and big GT cars roaring through, and then a completely different pack of cars the next session. Across the weekend, titles were on the line in <strong>20 classes</strong>.</p>
 
@@ -53,7 +53,7 @@ draft: true
 
 <h3>❤️ Final Thoughts</h3>
 
-<p>I packed up Sunday afternoon after just one night, and it was a great weekend. Good food, good racing, and a perfect little reset. If you've only been to Sebring for the 12 Hours, go check out a club racing weekend. It's cheaper (or free!), it's way more relaxed, and you get to see real people racing hard for a national title.</p>
+<p>After burritos for lunch, I packed up and headed home later Sunday. Just one night, but it was a great weekend. Good food, good racing, and a perfect little reset. If you've only been to Sebring for the 12 Hours, go check out a club racing weekend. It's cheaper (or free!), it's way more relaxed, and you get to see real people racing hard for a national title.</p>
 
 <p>[Video from the weekend: paste the YouTube link in the YouTube field, or delete this line.]</p>
 
