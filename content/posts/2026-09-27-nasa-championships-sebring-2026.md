@@ -7,7 +7,7 @@ image: "/assets/img/nasa-sebring-2026-gt-car-corner.jpg"
 image_alt: "A white and black GT race car with a big rear wing turns through a corner at Sebring during the 2026 NASA Championships (photo by Darien Entwistle)"
 featured: false
 placeholder: false
-draft: true
+draft: false
 ---
 <p>Sebring in September hits different. No 12-hour crowds, no fireworks, just a whole paddock full of grassroots racers chasing a national title. Last month I headed up for the <strong>2026 NASA Championships</strong>, camped one night, and came home already planning the next trip.</p>
 
@@ -39,7 +39,7 @@ draft: true
 
 <p>Honestly? The highlight was seeing <strong>all the Miatas</strong> racing together on track. There were SO many of them. Spec Miata was the biggest field of the weekend: a <strong>44-car field in Saturday's qualifying race</strong> and <strong>more than 40 taking the green flag Sunday</strong>. Watching a pack that big funnel through a corner, nose to tail and door to door, was awesome. It's like a swarm.</p>
 
-<p>For the record, NASA Florida's Francisco Barroso won the Spec Miata championship after swapping the lead back and forth with Travis Wiley all race. [Any Miata moment I saw from Turns 8–9]</p>
+<p>For the record, NASA Florida's Francisco Barroso won the Spec Miata championship after swapping the lead back and forth with Travis Wiley all race.</p>
 
 <figure><img src="/assets/img/nasa-sebring-2026-yellow-33.jpg" alt="Yellow race car number 33 on track behind the guardrail, with blue and white tire barriers and a pit building in the background"><figcaption>Number 33 rolling past the tire wall.</figcaption></figure>
 
@@ -54,8 +54,6 @@ draft: true
 <h3>❤️ Final Thoughts</h3>
 
 <p>After burritos for lunch, I packed up and headed home later Sunday. Just one night, but it was a great weekend. Good food, good racing, and a perfect little reset. If you've only been to Sebring for the 12 Hours, go check out a club racing weekend. It's cheaper (or free!), it's way more relaxed, and you get to see real people racing hard for a national title.</p>
-
-<p>[Video from the weekend: paste the YouTube link in the YouTube field, or delete this line.]</p>
 
 <p>I'll be back. Maybe with a few more nights booked next time. 🏁</p>
 
