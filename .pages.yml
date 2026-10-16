@@ -1,0 +1,76 @@
+# Pages CMS config: edit posts in the browser at https://app.pagescms.org
+media:
+  input: assets/img
+  output: /assets/img
+  categories: [image]
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: content/posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, date, category, featured]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: category
+        label: Category / series
+        type: select
+        default: Racing
+        options:
+          values: [Racing, "Racing & Camping", Camping, IMSA, F1, NASCAR, IndyCar, "Site News"]
+      - name: excerpt
+        label: Excerpt (1-2 sentences for cards and previews)
+        type: text
+        required: true
+      - name: image
+        label: Cover image
+        type: image
+        options:
+          extensions: [jpg, jpeg, png, webp]
+          rename: safe
+      - name: image_alt
+        label: Cover image description (alt text / caption)
+        type: string
+      - name: youtube
+        label: YouTube video URL (optional; shown at the top, or where you type {{youtube}} in the body)
+        type: string
+      - name: featured
+        label: Featured on the home page
+        description: The newest featured post is shown on the home page.
+        type: boolean
+        default: false
+      - name: placeholder
+        label: Starter / placeholder post (shows a "Starter" badge)
+        type: boolean
+        default: false
+      - name: placeholder_note
+        label: Starter note (shown at the top when set)
+        type: text
+      - name: source_url
+        label: Originally published at (URL; adds an "Originally published on dentwistle.online" note)
+        type: string
+      - name: draft
+        label: Draft (hide from the site)
+        type: boolean
+        default: false
+      - name: body
+        label: Post body
+        type: rich-text
+        options:
+          format: html
+          rename: safe

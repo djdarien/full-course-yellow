@@ -6,33 +6,48 @@ YouTube: [@djdarien93](https://youtube.com/@djdarien93) · Personal site: [dentw
 Live: https://djdarien.github.io/full-course-yellow/
 
 ## How it works
-- `posts/` — one HTML file per blog post (with a small front-matter header).
-- `src/about.html` — About page content.
-- `assets/` — CSS and images (photos © Darien Entwistle, reused from dentwistle.online).
+- `content/posts/` — one Markdown file per blog post (front matter + HTML/Markdown body). Edited by hand or with Pages CMS.
+- `.pages.yml` — Pages CMS configuration (post fields + image folder `assets/img`).
+- `src/about.html`, `src/series.html` — About and Series Guide page content.
+- `assets/` — CSS and images (photos © Darien Entwistle, reused from dentwistle.online). CMS uploads land in `assets/img/`.
 - `build.py` — stdlib-only Python builder that renders everything into `_site/`.
 - `.github/workflows/pages.yml` — builds and deploys to GitHub Pages on every push to `main`, every 3 hours (to refresh news), or manually.
 
-## Adding a post
-1. Create `posts/YYYY-MM-DD-your-slug.html`:
-   ```html
-   ---
-   title: My Race Weekend at Road Atlanta
-   date: 2026-10-20
-   category: Racing
-   excerpt: One or two sentences for cards and previews.
-   image: assets/img/your-photo.jpg
-   image_alt: Describe the photo
-   featured: true
-   ---
-   <p>Your post body in plain HTML.</p>
-   <h3>A section heading</h3>
-   ```
-   - `image`, `image_alt`, `featured` are optional. Put photos in `assets/img/` (resize to ~1800px wide).
-   - The newest post with `featured: true` (or else the newest post) is featured on the home page. Remove `featured: true` from the old one when you feature a new one.
-   - `placeholder: true` shows a "Starter" badge — remove it once you've written real content.
-   - Embed a YouTube video: `<div class="video"><iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe></div>`
-2. Preview locally: `python3 build.py && python3 -m http.server -d _site 8000` → http://localhost:8000
-3. Commit and push to `main`; the site redeploys automatically.
+## Editing posts in the browser (Pages CMS — free, no secrets)
+**One-time setup**
+1. Go to **https://app.pagescms.org** and click **Sign in with GitHub** (use the `djdarien` account).
+2. When asked, **install/authorize the Pages CMS GitHub App** and give it access to **only** the `full-course-yellow` repository.
+3. Open **djdarien/full-course-yellow** (branch `main`) from the Pages CMS dashboard.
+
+**Day to day**
+- **New post:** *Blog posts → Add an entry*. Fill in Title, Date, Category, Excerpt, Cover image (upload or pick), optional YouTube URL, and write the body. Click **Save**. Pages CMS commits to `main`; the site rebuilds and is live in about a minute.
+- **Edit:** open the post, change it, **Save**.
+- **Delete:** open the post → **⋯ / Delete**. It disappears from the blog, home page, and prev/next links on the next build.
+- **Images:** upload in the Cover image field or with the image button in the body editor; files go to `assets/img/`. Under the *Media* tab you can manage them.
+- **Featured on home page:** tick *Featured*. The newest featured post wins (untick it on the old one if you like).
+- **YouTube:** paste a URL in *YouTube video URL*. The video shows at the top of the body, or exactly where you type `{{youtube}}` on its own line.
+- **Drafts:** tick *Draft* to keep a post off the site.
+- **Starter / Originally published notes:** *Starter* adds the badge; *Starter note* and *Originally published at* add the notes at the top of the post.
+
+## Adding a post by hand
+Create `content/posts/YYYY-MM-DD-your-slug.md`:
+```markdown
+---
+title: "My Race Weekend at Road Atlanta"
+date: 2026-10-20
+category: IMSA
+excerpt: "One or two sentences for cards and previews."
+image: /assets/img/your-photo.jpg
+image_alt: "Describe the photo"
+youtube: https://www.youtube.com/watch?v=VIDEO_ID
+featured: true
+---
+<p>Body in HTML…</p>
+
+## …or Markdown
+Plain **Markdown** works too (headings, lists, links, images, bold/italic).
+```
+Only `title`, `date` and `excerpt` are needed. Preview locally: `python3 build.py && python3 -m http.server -d _site 8000` → http://localhost:8000. Commit and push to `main` to publish.
 
 ## Racing news
 News is fetched **at build time** in GitHub Actions — no API key is ever in the repo or the browser.

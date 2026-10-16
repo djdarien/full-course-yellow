@@ -21,23 +21,114 @@ PER_SERIES = 6
 
 def esc(s): return html.escape(str(s), quote=True)
 
+POSTS_DIR = os.path.join(ROOT, "content", "posts")
+
+def yaml_scalar(v):
+    v = v.strip()
+    if v[:1] == '"' and v[-1:] == '"':
+        try: return json.loads(v)
+        except Exception: return v[1:-1]
+    if v[:1] == "'" and v[-1:] == "'": return v[1:-1].replace("''", "'")
+    if v.lower() in ("true", "yes"): return True
+    if v.lower() in ("false", "no"): return False
+    if v.lower() in ("null", "~", ""): return ""
+    return v
+
+def parse_front_matter(text):
+    """Minimal YAML subset (what Pages CMS writes): key: scalar, quoted strings, booleans, | and > blocks."""
+    meta, lines, i = {}, text.splitlines(), 0
+    while i < len(lines):
+        m = re.match(r"^([A-Za-z_][\w-]*):\s?(.*)$", lines[i]); i += 1
+        if not m: continue
+        k, v = m.group(1), m.group(2)
+        if v.strip()[:1] in ("|", ">"):
+            block = []
+            while i < len(lines) and (lines[i].startswith((" ", "\t")) or not lines[i].strip()):
+                block.append(lines[i].strip()); i += 1
+            meta[k] = ("\n" if v.strip()[0] == "|" else " ").join(block).strip()
+        else:
+            # plain multi-line continuation
+            while i < len(lines) and lines[i].startswith("  ") and not re.match(r"^[A-Za-z_][\w-]*:", lines[i]):
+                v += " " + lines[i].strip(); i += 1
+            meta[k] = yaml_scalar(v)
+    return meta
+
+def md_inline(t):
+    t = re.sub(r"!\[([^\]]*)\]\(([^)\s]+)[^)]*\)", r'<img src="\2" alt="\1" loading="lazy">', t)
+    t = re.sub(r"\[([^\]]+)\]\(([^)\s]+)[^)]*\)", r'<a href="\2">\1</a>', t)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    return re.sub(r"(?<![\w*])\*(?!\s)(.+?)\*(?!\w)|(?<!\w)_(?!\s)(.+?)_(?!\w)", lambda m: f"<em>{m.group(1) or m.group(2)}</em>", t)
+
+def markdown_to_html(src):
+    """Small Markdown renderer for bodies written in the CMS source/markdown mode. HTML bodies pass through."""
+    if re.search(r"^\s*<(p|h\d|ul|ol|div|figure|blockquote|iframe|img|table)\b", src, re.M | re.I): return src
+    out, para, lst = [], [], None
+    def flush():
+        nonlocal lst
+        if para: out.append("<p>" + md_inline(" ".join(para)) + "</p>"); para.clear()
+        if lst: out.append(f"</{lst}>"); lst = None
+    for line in src.splitlines():
+        l = line.rstrip()
+        h = re.match(r"^(#{1,6})\s+(.*)", l); ul = re.match(r"^\s*[-*+]\s+(.*)", l); ol = re.match(r"^\s*\d+[.)]\s+(.*)", l)
+        if not l.strip(): flush()
+        elif h:
+            flush(); n = max(2, min(len(h.group(1)) + 1, 4)); out.append(f"<h{n}>{md_inline(h.group(2))}</h{n}>")
+        elif ul or ol:
+            kind = "ul" if ul else "ol"
+            if para: out.append("<p>" + md_inline(" ".join(para)) + "</p>"); para.clear()
+            if lst != kind:
+                if lst: out.append(f"</{lst}>")
+                out.append(f"<{kind}>"); lst = kind
+            out.append(f"<li>{md_inline((ul or ol).group(1))}</li>")
+        elif l.startswith(">"): flush(); out.append(f"<blockquote><p>{md_inline(l.lstrip('> '))}</p></blockquote>")
+        else: para.append(l.strip())
+    flush()
+    return "\n".join(out)
+
+def youtube_embed(url):
+    m = re.search(r"(?:youtu\.be/|v=|/embed/|/shorts/|/live/)([\w-]{11})", url or "")
+    if not m: return ""
+    return (f'<div class="video"><iframe src="https://www.youtube.com/embed/{m.group(1)}" title="YouTube video" loading="lazy" '
+            'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+
+def site_path(p):
+    """CMS writes media paths as /assets/img/...; the site lives under /full-course-yellow/, so make them relative."""
+    p = (p or "").strip()
+    return p[1:] if p.startswith("/assets/") else p
+
 def load_posts():
     posts = []
-    for fn in sorted(os.listdir(os.path.join(ROOT, "posts"))):
-        if not fn.endswith(".html"): continue
-        raw = open(os.path.join(ROOT, "posts", fn), encoding="utf-8").read()
-        m = re.match(r"---\n(.*?)\n---\n(.*)", raw, re.S)
-        meta = {}
-        for line in m.group(1).splitlines():
-            if ":" in line:
-                k, v = line.split(":", 1); meta[k.strip()] = v.strip()
-        meta["body"] = m.group(2)
-        meta["slug"] = fn[:-5]
-        meta["featured"] = meta.get("featured") == "true"
-        meta["placeholder"] = meta.get("placeholder") == "true"
-        meta["date_obj"] = datetime.date.fromisoformat(meta["date"])
-        posts.append(meta)
-    posts.sort(key=lambda p: p["date_obj"], reverse=True)
+    for fn in sorted(os.listdir(POSTS_DIR)):
+        if not fn.endswith(".md"): continue
+        raw = open(os.path.join(POSTS_DIR, fn), encoding="utf-8").read().lstrip("\ufeff")
+        m = re.match(r"---\s*\n(.*?)\n---\s*\n?(.*)", raw, re.S)
+        if not m:
+            print("Skipping (no front matter):", fn); continue
+        meta = parse_front_matter(m.group(1))
+        if meta.get("draft") is True: continue
+        if not meta.get("title"):
+            print("Skipping (no title):", fn); continue
+        slug = re.sub(r"[^a-z0-9-]+", "-", fn[:-3].lower()).strip("-")
+        try: d = datetime.date.fromisoformat(str(meta.get("date", ""))[:10])
+        except ValueError:
+            mm = re.match(r"(\d{4})-(\d{2})-(\d{2})", fn); d = datetime.date(*map(int, mm.groups())) if mm else datetime.date.today()
+        body = markdown_to_html(m.group(2).strip())
+        yt = youtube_embed(meta.get("youtube"))
+        if re.search(r"(<p>\s*)?\{\{\s*youtube\s*\}\}(\s*</p>)?", body):
+            body = re.sub(r"(<p>\s*)?\{\{\s*youtube\s*\}\}(\s*</p>)?", lambda _m: yt, body)
+        elif yt:
+            body = yt + body
+        if meta.get("placeholder_note") or meta.get("placeholder") is True:
+            note = meta.get("placeholder_note") or "Starter / placeholder post. Darien, edit or replace this with your own words."
+            body = f'<p class="placeholder-note">📝 {note}</p>\n' + body
+        if meta.get("source_url"):
+            body = (f'<p class="source-note">Originally published on <a href="{esc(meta["source_url"])}">dentwistle.online</a> by Darien Entwistle.</p>\n') + body
+        body = re.sub(r'(src|href)="/assets/', r'\1="../assets/', body)
+        posts.append({**meta, "title": str(meta["title"]), "slug": slug, "body": body, "date_obj": d,
+                      "category": str(meta.get("category") or "Racing"), "excerpt": str(meta.get("excerpt") or ""),
+                      "image": site_path(meta.get("image")), "image_alt": str(meta.get("image_alt") or ""),
+                      "featured": meta.get("featured") is True, "placeholder": meta.get("placeholder") is True})
+    posts.sort(key=lambda p: (p["date_obj"], p["slug"]), reverse=True)
     return posts
 
 def nice_date(d): return d.strftime("%B %-d, %Y")
@@ -190,7 +281,7 @@ def build():
     shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(OUT, "assets"))
     os.makedirs(os.path.join(OUT, "posts"))
     posts = load_posts()
-    featured = next((p for p in posts if p["featured"]), posts[0])
+    featured = next((p for p in posts if p["featured"]), posts[0] if posts else None)
     news = get_news()
     for n in news["items"]:
         n["sid"], n["slabel"] = (n["sid_hint"], dict((x[0], x[1]) for x in SERIES)[n["sid_hint"]]) if n.get("sid_hint") else classify(f'{n.get("title","")} {n.get("summary","")}', n.get("link",""))
@@ -231,7 +322,7 @@ def build():
 <section class="wrap yt-band"><div><span class="kicker">On YouTube</span><h2>Trackside video from Darien</h2><p>Race-weekend recaps from Daytona, Sebring and beyond.</p></div><a class="btn" href="{YT}" target="_blank" rel="noopener">▶ @djdarien93</a></section>"""
     open(os.path.join(OUT, "index.html"), "w").write(page("Full Course Yellow — Motorsport News & Race Weekends", home, active="News", ticker=ticker))
 
-    blog = f'<div class="wrap"><header class="page-head"><span class="kicker">The blog</span><h1>Race Weekends</h1><p class="lead-p">Race reports, camping at the track, and the odd off-track story.</p></header><div class="grid grid-3 pb">{"".join(card(p) for p in posts)}</div></div>'
+    blog = f'<div class="wrap"><header class="page-head"><span class="kicker">The blog</span><h1>Race Weekends</h1><p class="lead-p">Race reports, camping at the track, and notes from the grandstands.</p></header><div class="grid grid-3 pb">{"".join(card(p) for p in posts)}</div></div>'
     open(os.path.join(OUT, "blog.html"), "w").write(page("Blog — Full Course Yellow", blog, active="Blog", ticker=ticker))
 
     for i, p in enumerate(posts):

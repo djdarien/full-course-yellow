@@ -1,12 +1,13 @@
 ---
-title: My Rolex 24 at Daytona Experience – A Weekend I Won't Forget
+title: "My Rolex 24 at Daytona Experience – A Weekend I Won't Forget"
 date: 2026-03-24
-category: Racing
-excerpt: I finally got to attend the Rolex 24 at Daytona, and it lived up to everything I imagined and more — from the night racing to meeting Jordan Taylor again.
-image: assets/img/sebring-hero.jpg
-image_alt: Cadillac No. 10 IMSA prototype on the grid (photo by Darien Entwistle)
+category: "Racing"
+excerpt: "I finally got to attend the Rolex 24 at Daytona, and it lived up to everything I imagined and more — from the night racing to meeting Jordan Taylor again."
+image: "/assets/img/sebring-hero.jpg"
+image_alt: "Cadillac No. 10 IMSA prototype on the grid (photo by Darien Entwistle)"
+youtube: "https://www.youtube.com/watch?v=Le_UxsAcuss"
+source_url: "https://dentwistle.online/blog.html"
 ---
-<p class="source-note">Originally published on <a href="https://dentwistle.online/blog.html">dentwistle.online</a> by Darien Entwistle.</p>
 <h3>There are some events you go to… and then there are experiences that stick with you long after you leave.</h3>
 
 <p>This year, I finally got to attend the Rolex 24 at Daytona, and I can confidently say — it lived up to everything I imagined and more.</p>
@@ -18,10 +19,7 @@ image_alt: Cadillac No. 10 IMSA prototype on the grid (photo by Darien Entwistle
 <h3>🎥 Watch My Experience</h3>
 
 <p>Before diving in, here's the video I put together capturing some of my favorite moments:</p>
-
-<div class="video">
-    <iframe src="https://www.youtube.com/embed/Le_UxsAcuss" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<p>{{youtube}}</p>
 
 <h3>🌤️ Saturday – First Impressions & Soaking It All In</h3>
 
@@ -36,10 +34,10 @@ image_alt: Cadillac No. 10 IMSA prototype on the grid (photo by Darien Entwistle
 <p>I spent that day exploring:</p>
 
 <ul>
-    <li>Walking the stands</li>
-    <li>Checking out different viewing angles</li>
-    <li>Watching pit activity</li>
-    <li>Just taking everything in without rushing</li>
+<li>Walking the stands</li>
+<li>Checking out different viewing angles</li>
+<li>Watching pit activity</li>
+<li>Just taking everything in without rushing</li>
 </ul>
 
 <p>As the afternoon rolled into evening, the whole atmosphere shifted. The sun started dropping, the lights came on, and the race transformed.</p>
@@ -75,9 +73,9 @@ image_alt: Cadillac No. 10 IMSA prototype on the grid (photo by Darien Entwistle
 <p>One thing that stood out to me more than anything — the people.</p>
 
 <ul>
-    <li>Fans were incredibly helpful</li>
-    <li>Vendors were friendly and welcoming</li>
-    <li>Everyone just shared the same passion for being there</li>
+<li>Fans were incredibly helpful</li>
+<li>Vendors were friendly and welcoming</li>
+<li>Everyone just shared the same passion for being there</li>
 </ul>
 
 <p>That's something you don't always get at big events, but here it felt natural. Like everyone was part of the same experience.</p>
@@ -95,10 +93,10 @@ image_alt: Cadillac No. 10 IMSA prototype on the grid (photo by Darien Entwistle
 <p>This isn't just driving fast.</p>
 
 <ul>
-    <li>Teams working nonstop</li>
-    <li>Constant adjustments</li>
-    <li>Strategy evolving every hour</li>
-    <li>Mechanics pushing just as hard as drivers</li>
+<li>Teams working nonstop</li>
+<li>Constant adjustments</li>
+<li>Strategy evolving every hour</li>
+<li>Mechanics pushing just as hard as drivers</li>
 </ul>
 
 <p>To make it to the finish of a 24-hour race like this is an achievement on its own. Winning is incredible — but even finishing feels like a victory.</p>

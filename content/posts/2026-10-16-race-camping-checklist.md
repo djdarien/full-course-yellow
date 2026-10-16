@@ -1,11 +1,11 @@
 ---
-title: Race Weekend Camping Checklist (Starter)
+title: "Race Weekend Camping Checklist (Starter)"
 date: 2026-10-16
-category: Camping
-excerpt: Starter checklist built from the lessons in my Sebring write-up — camp kitchen, backup viewing spots, pacing, and more.
+category: "Camping"
+excerpt: "Starter checklist built from the lessons in my Sebring write-up — camp kitchen, backup viewing spots, pacing, and more."
 placeholder: true
+placeholder_note: "Starter post compiled from tips in the <a href=\"2026-04-15-12-hours-of-sebring-2026.html\">12 Hours of Sebring 2026</a> write-up. Darien — expand it with your full gear list."
 ---
-<p class="placeholder-note">📝 Starter post compiled from tips in the <a href="2026-04-15-12-hours-of-sebring-2026.html">12 Hours of Sebring 2026</a> write-up. Darien — expand it with your full gear list.</p>
 <h3>From the Sebring weekend</h3>
 <ul>
 <li><strong>Camp stove, cooler full of ingredients, and a portable table.</strong> Cooking at camp turned every meal into quality time — breakfast burritos, grilled chicken with veggies and rice, pasta dinners, quick quesadillas.</li>

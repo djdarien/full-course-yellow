@@ -1,11 +1,11 @@
 ---
-title: Welcome to Full Course Yellow
+title: "Welcome to Full Course Yellow"
 date: 2026-10-16
-category: Site News
-excerpt: Starter post — what this site is about: race weekends, camping at the track, and the latest motorsport headlines.
+category: "Site News"
+excerpt: "Starter post — what this site is about: race weekends, camping at the track, and the latest motorsport headlines."
 placeholder: true
+placeholder_note: "Starter / placeholder post written to launch the site. Darien — edit or replace this with your own words."
 ---
-<p class="placeholder-note">📝 Starter / placeholder post written to launch the site. Darien — edit or replace this with your own words.</p>
 <p>Full Course Yellow is my home for everything motorsport: write-ups from the races I attend, tips from camping at the track, and a running feed of racing news.</p>
 <p>So far that has meant endurance racing in Florida — the <a href="2026-03-24-rolex-24-at-daytona.html">Rolex 24 at Daytona</a> and the <a href="2026-04-15-12-hours-of-sebring-2026.html">12 Hours of Sebring</a>. More race weekends will land here as I go.</p>
 <p>Video from the track lives on my YouTube channel, <a href="https://youtube.com/@djdarien93">@djdarien93</a>.</p>
