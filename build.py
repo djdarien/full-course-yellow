@@ -12,8 +12,12 @@ import xml.etree.ElementTree as ET
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "_site")
 YT = "https://youtube.com/@djdarien93"
-NEWS_QUERY = "motorsport OR IMSA OR NASCAR OR \"Formula 1\" OR IndyCar"
+NEWS_QUERY = "Formula 1 OR IMSA OR NASCAR OR IndyCar OR \"Indy 500\" OR WeatherTech OR \"Le Mans\" OR motorsport"
 RSS_FALLBACK = "https://www.motorsport.com/rss/all/news/"
+# Per-series public feeds so every series filter has headlines even on quiet days.
+RSS_SERIES = {"f1": "https://www.motorsport.com/rss/f1/news/", "imsa": "https://www.motorsport.com/rss/imsa/news/",
+              "nascar": "https://www.motorsport.com/rss/nascar-cup/news/", "indycar": "https://www.motorsport.com/rss/indycar/news/"}
+PER_SERIES = 6
 
 def esc(s): return html.escape(str(s), quote=True)
 
@@ -77,7 +81,7 @@ def post_img(p, root, sizes, eager=False, cls=""):
 
 def page(title, body, root="", desc="Full Course Yellow — race weekends, camping at the track, and motorsport news by Darien Entwistle.", active="", ticker=None):
     main_nav = "".join(f'<a href="{root}{h}" class="{"active" if active==k else ""}">{k}</a>'
-                       for k, h in [("News","index.html"),("Blog","blog.html"),("About","about.html")])
+                       for k, h in [("News","index.html"),("Blog","blog.html"),("Series","series.html"),("About","about.html")])
     series_nav = "".join(f'<a href="{root}index.html#{sid}" data-series="{sid}">{lbl}</a>' for sid, lbl in NAV_SERIES)
     tick = ""
     if ticker:
@@ -106,14 +110,14 @@ def page(title, body, root="", desc="Full Course Yellow — race weekends, campi
 <div><a class="brand" href="{root}index.html"><img src="{root}assets/img/flag.svg" alt="" width="26" height="26"><span>FULL COURSE <b>YELLOW</b></span></a>
 <p class="small">Race weekends, camping at the track, and motorsport news — by Darien Entwistle.</p></div>
 <div><h4>Series</h4>{series_nav}</div>
-<div><h4>Site</h4><a href="{root}blog.html">Blog</a><a href="{root}about.html">About</a><a href="{YT}" target="_blank" rel="noopener">YouTube @djdarien93</a><a href="https://dentwistle.online" target="_blank" rel="noopener">dentwistle.online</a></div>
+<div><h4>Site</h4><a href="{root}blog.html">Blog</a><a href="{root}series.html">Series guide</a><a href="{root}about.html">About</a><a href="{YT}" target="_blank" rel="noopener">YouTube @djdarien93</a><a href="https://dentwistle.online" target="_blank" rel="noopener">dentwistle.online</a></div>
 </div><div class="wrap"><p class="small legal">Photos &amp; original posts © Darien Entwistle, reused from <a href="https://dentwistle.online">dentwistle.online</a>. Headlines link to and belong to their original publishers.</p></div></footer>
 <script>
 (function(){{var b=document.body,t=document.querySelector('.nav-open-btn');
 function apply(){{var s=(location.hash||'#all').slice(1),grid=document.querySelector('[data-news-grid]');
 document.querySelectorAll('.series-nav a[data-series]').forEach(function(a){{a.classList.toggle('active',a.dataset.series===s&&!!grid)}});
 if(!grid)return;var n=0;grid.querySelectorAll('[data-sid]').forEach(function(c){{var show=s==='all'||c.dataset.sid===s;c.hidden=!show;if(show)n++}});
-var e=document.querySelector('[data-empty]');if(e)e.hidden=n>0;var h=document.querySelector('[data-grid-title]');
+var e=document.querySelector('[data-empty]');if(e){{e.hidden=n>0;var L=document.querySelector('[data-empty-links]'),R=window.FCY_RELATED||{{}};if(L&&!n){{var r=(R[s]||R.all||[]);L.innerHTML='<a class="btn btn-sm" href="series.html#'+s+'">Series guide →</a>'+r.map(function(p){{return '<a class="rel" href="'+p.u+'">From the blog: '+p.t.replace(/</g,'&lt;')+'</a>'}}).join('')}}}}var h=document.querySelector('[data-grid-title]');
 if(h){{var a=document.querySelector('.series-nav a[data-series="'+s+'"]');h.textContent=(s==='all'?'Latest headlines':(a?a.textContent:s)+' news')}}}}
 window.addEventListener('hashchange',function(){{apply();var g=document.getElementById('headlines');if(g&&location.hash)g.scrollIntoView({{behavior:'smooth'}})}});apply();}})();
 </script>
@@ -147,18 +151,31 @@ def get_news():
             if items: return {"provider": "NewsData.io", "items": items[:24]}
         except Exception as e:
             print("NewsData fetch failed, falling back to RSS:", type(e).__name__)
+    items = rss_items(RSS_FALLBACK)[:18]
+    for sid, url in RSS_SERIES.items():
+        items += [dict(it, sid_hint=sid) for it in rss_items(url)[:PER_SERIES]]
+    seen, out = set(), []
+    for it in items:
+        k = (it["link"] or "").split("?")[0]
+        if k and k not in seen: seen.add(k); out.append(it)
+    out.sort(key=lambda it: it.get("ts") or 0, reverse=True)
+    return {"provider": "Motorsport.com RSS" if out else None, "items": out}
+
+def rss_items(url):
+    from email.utils import parsedate_to_datetime
     try:
-        root = ET.fromstring(fetch(RSS_FALLBACK))
-        items = []
-        for it in root.iter("item"):
-            enc = it.find("enclosure")
-            items.append({"title": strip_tags(it.findtext("title")), "link": it.findtext("link"),
-                          "image": enc.get("url") if enc is not None else None, "source": "Motorsport.com",
-                          "date": it.findtext("pubDate"), "summary": strip_tags(it.findtext("description"))[:220]})
-        return {"provider": "Motorsport.com RSS", "items": items[:24]}
+        root = ET.fromstring(fetch(url))
     except Exception as e:
-        print("RSS fallback failed:", type(e).__name__)
-        return {"provider": None, "items": []}
+        print("RSS fetch failed:", url, type(e).__name__); return []
+    items = []
+    for it in root.iter("item"):
+        enc = it.find("enclosure")
+        try: ts = parsedate_to_datetime(it.findtext("pubDate")).timestamp()
+        except Exception: ts = 0
+        items.append({"title": strip_tags(it.findtext("title")), "link": it.findtext("link"),
+                      "image": enc.get("url") if enc is not None else None, "source": "Motorsport.com",
+                      "date": it.findtext("pubDate"), "ts": ts, "summary": strip_tags(it.findtext("description"))[:220]})
+    return items
 
 def news_card(n, big=False):
     img = (f'<img src="{esc(n["image"])}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" width="400" height="225">'
@@ -176,7 +193,7 @@ def build():
     featured = next((p for p in posts if p["featured"]), posts[0])
     news = get_news()
     for n in news["items"]:
-        n["sid"], n["slabel"] = classify(f'{n.get("title","")} {n.get("summary","")}', n.get("link",""))
+        n["sid"], n["slabel"] = (n["sid_hint"], dict((x[0], x[1]) for x in SERIES)[n["sid_hint"]]) if n.get("sid_hint") else classify(f'{n.get("title","")} {n.get("summary","")}', n.get("link",""))
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%b %-d, %Y %H:%M UTC")
     json.dump({**news, "updated": stamp}, open(os.path.join(OUT, "news.json"), "w"), indent=1)
     items = news["items"]
@@ -196,7 +213,10 @@ def build():
     side_html = "".join(f'<a class="side-item" href="{esc(n["link"])}" target="_blank" rel="noopener"><span class="chip s-{n["sid"]}">{esc(n["slabel"])}</span><h4>{esc(n["title"])}</h4><span class="src">{esc(n.get("source") or "")}</span></a>' for n in side)
     grid_items = [n for n in items if n is not lead]
     others = [p for p in posts if p is not featured][:3]
-    empty = '<p class="notice" data-empty hidden>No headlines for this series right now — check back after the next refresh.</p>'
+    empty = '<div class="empty" data-empty hidden><h3>Quiet on track right now</h3><p>No fresh headlines for this series at the last refresh — news updates every 3 hours.</p><div class="empty-links" data-empty-links></div></div>'
+    related = {"imsa": [p for p in posts if "Racing" in p["category"]], "all": posts[:2]}
+    rel_json = json.dumps({k: [{"t": p["title"], "u": f"posts/{p['slug']}.html"} for p in v] for k, v in related.items()})
+    empty += f'<script>window.FCY_RELATED={rel_json};</script>'
     if not items:
         empty = '<p class="notice" data-empty>Racing news is taking a pit stop — check back soon.</p>'
     home = f"""
@@ -224,6 +244,9 @@ def build():
 <div class="yt-cta">🎥 More from the track on YouTube: <a href="{YT}" target="_blank" rel="noopener">@djdarien93</a></div>{nav}</div></article>"""
         open(os.path.join(OUT, "posts", p["slug"] + ".html"), "w").write(page(p["title"] + " — Full Course Yellow", body, root="../", desc=p["excerpt"], active="Blog"))
 
+    series = open(os.path.join(ROOT, "src", "series.html"), encoding="utf-8").read()
+    open(os.path.join(OUT, "series.html"), "w").write(page("Series Guide — Full Course Yellow", series, active="Series",
+         desc="A plain-English guide to F1, IMSA, NASCAR and IndyCar."))
     about = open(os.path.join(ROOT, "src", "about.html"), encoding="utf-8").read().replace("{{YT}}", YT)
     open(os.path.join(OUT, "about.html"), "w").write(page("About — Full Course Yellow", about, active="About"))
     open(os.path.join(OUT, ".nojekyll"), "w").close()

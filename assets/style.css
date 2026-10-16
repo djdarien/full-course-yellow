@@ -134,3 +134,20 @@ time,.meta,.small,.src{color:var(--mu);font-size:.8rem}
 .ncard{flex-direction:row}.ncard .card-media{flex:0 0 120px;aspect-ratio:auto;min-height:96px}.ncard .card-media .chip{left:6px;bottom:6px;font-size:.66rem;padding:2px 6px}
 .ncard .card-body{padding:10px 12px}.ncard h3{font-size:1.1rem}.ncard p{-webkit-line-clamp:2;font-size:.8rem}
 .yt-band{flex-direction:column;align-items:flex-start}.fpost-txt{padding:20px}.post-nav{grid-template-columns:1fr}.post-nav .next{text-align:left}}
+/* v2.1 additions */
+.empty{background:var(--bg2);border:1px dashed var(--line);border-left:5px solid var(--y);border-radius:4px;padding:24px;margin:10px 0}
+.empty h3{margin:0 0 4px;font-size:1.6rem;font-style:italic;text-transform:uppercase}.empty p{color:#bfc1c6;margin:0 0 14px}
+.empty-links{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.empty-links .rel{color:#fff;text-decoration:none;background:var(--bg3);padding:9px 14px;border-radius:2px;font-weight:600;font-size:.9rem}.empty-links .rel:hover{color:var(--y)}
+.btn-sm{padding:8px 14px;font-size:.9rem}
+.series-page{max-width:980px}
+.sg{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--line);scroll-margin-top:120px}
+.sg-tag{font:900 italic 1.5rem "Barlow Condensed",sans-serif;text-align:center;padding:18px 6px;border-radius:4px;height:max-content;color:#fff}
+.sg h2{font-size:2.2rem;font-weight:800;margin:0 0 8px;line-height:1.05}.sg p,.sg li{color:#d0d2d6}.sg li{margin:.3em 0}.sg li::marker{color:var(--y)}
+.sg-links a{font-weight:700;text-decoration:none}
+.sg-posts{margin-top:14px;background:var(--bg2);border-left:4px solid var(--y);padding:14px 16px;border-radius:0 4px 4px 0}
+.sg-posts a{display:block;color:#fff;text-decoration:none;font-weight:600;padding:3px 0}.sg-posts a:hover{color:var(--y)}
+.about-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:24px 0}
+.about-facts div{background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--y);padding:14px;border-radius:4px}
+.about-facts b{display:block;font:800 1.5rem "Barlow Condensed",sans-serif;color:#fff;text-transform:uppercase}.about-facts span{color:var(--mu);font-size:.85rem}
+@media(max-width:620px){.sg{grid-template-columns:1fr;gap:10px}.sg-tag{width:max-content;padding:6px 14px;font-size:1.1rem}.sg h2{font-size:1.8rem}.main-nav a:not(.yt){display:none}}
