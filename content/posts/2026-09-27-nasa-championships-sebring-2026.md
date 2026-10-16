@@ -1,5 +1,5 @@
 ---
-title: "One Night at the NASA Championships: Miatas, Campfires & Turns 8–9 at Sebring"
+title: "One Night at the NASA Championships: Miatas, Camping & Turns 8–9 at Sebring"
 date: 2026-09-27
 category: "Club Racing"
 excerpt: "A quick Saturday-to-Sunday camping trip to the 20th NASA Championships at Sebring: a sea of Spec Miatas, rookies and veterans racing together, good food, and a great spot between Turns 8 and 9."
@@ -19,7 +19,7 @@ draft: true
 
 <p>This was the <strong>20th running</strong> of the NASA Championships, and NASA brought it back to Sebring for the first time since 2017. Drivers came in from regions all over the country, and you could feel it. Saturday was qualifying-race day, so every session mattered for Sunday's grids.</p>
 
-<p>As the sun went down, the light coming through the trees was ridiculous. Classic Sebring sunset. [What I cooked / ate Saturday night] tasted even better with engines still echoing from the paddock.</p>
+<p>As the sun went down, the light coming through the trees was ridiculous. Classic Sebring sunset. [What I cooked / ate Saturday night] hit the spot.</p>
 
 <figure><img src="/assets/img/nasa-sebring-2026-sunset-pines.jpg" alt="Golden sunset shining through pine trees beside the track fence at Sebring"><figcaption>Saturday sunset through the pines.</figcaption></figure>
 
