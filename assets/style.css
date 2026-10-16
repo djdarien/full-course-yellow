@@ -151,3 +151,5 @@ time,.meta,.small,.src{color:var(--mu);font-size:.8rem}
 .about-facts div{background:var(--bg2);border:1px solid var(--line);border-top:3px solid var(--y);padding:14px;border-radius:4px}
 .about-facts b{display:block;font:800 1.5rem "Barlow Condensed",sans-serif;color:#fff;text-transform:uppercase}.about-facts span{color:var(--mu);font-size:.85rem}
 @media(max-width:620px){.sg{grid-template-columns:1fr;gap:10px}.sg-tag{width:max-content;padding:6px 14px;font-size:1.1rem}.sg h2{font-size:1.8rem}.main-nav a:not(.yt){display:none}}
+.prose figure{margin:26px 0}.prose figure img{width:100%;border-radius:4px}
+.prose figcaption{color:var(--mu);font-size:.82rem;margin-top:8px;border-left:3px solid var(--y);padding-left:10px}

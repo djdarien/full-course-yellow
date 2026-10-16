@@ -32,7 +32,7 @@ content:
         type: select
         default: Racing
         options:
-          values: [Racing, "Racing & Camping", Camping, IMSA, F1, NASCAR, IndyCar, "Site News"]
+          values: [Racing, "Racing & Camping", "Club Racing", Camping, IMSA, F1, NASCAR, IndyCar, "Site News"]
       - name: excerpt
         label: Excerpt (1-2 sentences for cards and previews)
         type: text
