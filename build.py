@@ -123,7 +123,7 @@ def load_posts():
             body = f'<p class="placeholder-note">📝 {note}</p>\n' + body
         if meta.get("source_url"):
             body = (f'<p class="source-note">Originally published on <a href="{esc(meta["source_url"])}">dentwistle.online</a> by Darien Entwistle.</p>\n') + body
-        body = re.sub(r'(src|href)="/assets/', r'\1="../assets/', body)
+        body = re.sub(r'(src|href|poster)="/assets/', r'\1="../assets/', body)
         posts.append({**meta, "title": str(meta["title"]), "slug": slug, "body": body, "date_obj": d,
                       "category": str(meta.get("category") or "Racing"), "excerpt": str(meta.get("excerpt") or ""),
                       "image": site_path(meta.get("image")), "image_alt": str(meta.get("image_alt") or ""),
