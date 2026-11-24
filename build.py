@@ -191,7 +191,7 @@ def page(title, body, root="", desc="Full Course Yellow — race weekends, campi
 <header class="masthead">
 <div class="topbar"><div class="wrap">
 <a class="brand" href="{root}index.html"><img src="{root}assets/img/flag.svg" alt="" width="30" height="30"><span>FULL COURSE <b>YELLOW</b></span></a>
-<nav class="main-nav">{main_nav}<a href="{YT}" target="_blank" rel="noopener" class="yt">▶ YouTube</a></nav>
+<nav class="main-nav">{main_nav}<a href="https://full-course-yellow-dashboard.vercel.app" target="_blank" rel="noopener">Live Dashboard</a><a href="{YT}" target="_blank" rel="noopener" class="yt">▶ YouTube</a></nav>
 </div></div>
 <nav class="series-nav" aria-label="Series"><div class="wrap">{series_nav}<a href="{root}blog.html" class="sn-blog">Race Weekends</a></div></nav>
 </header>
@@ -201,7 +201,7 @@ def page(title, body, root="", desc="Full Course Yellow — race weekends, campi
 <div><a class="brand" href="{root}index.html"><img src="{root}assets/img/flag.svg" alt="" width="26" height="26"><span>FULL COURSE <b>YELLOW</b></span></a>
 <p class="small">Race weekends, camping at the track, and motorsport news — by Darien Entwistle.</p></div>
 <div><h4>Series</h4>{series_nav}</div>
-<div><h4>Site</h4><a href="{root}blog.html">Blog</a><a href="{root}series.html">Series guide</a><a href="{root}about.html">About</a><a href="{YT}" target="_blank" rel="noopener">YouTube @djdarien93</a><a href="https://dentwistle.online" target="_blank" rel="noopener">dentwistle.online</a></div>
+<div><h4>Site</h4><a href="{root}blog.html">Blog</a><a href="{root}series.html">Series guide</a><a href="{root}about.html">About</a><a href="https://full-course-yellow-dashboard.vercel.app" target="_blank" rel="noopener">Live Dashboard</a><a href="{YT}" target="_blank" rel="noopener">YouTube @djdarien93</a><a href="https://dentwistle.online" target="_blank" rel="noopener">dentwistle.online</a></div>
 </div><div class="wrap"><p class="small legal">Photos &amp; original posts © Darien Entwistle, reused from <a href="https://dentwistle.online">dentwistle.online</a>. Headlines link to and belong to their original publishers.</p></div></footer>
 <script>
 (function(){{var b=document.body,t=document.querySelector('.nav-open-btn');
