@@ -1,5 +1,5 @@
 ---
-title: Race Weekend Camping Checklist (Starter)
+title: "Race Weekend Camping Checklist "
 date: 2026-10-16
 category: Camping
 excerpt: >+
@@ -8,7 +8,7 @@ excerpt: >+
 
 image: /assets/img/nasa-sebring-2026-campsite.jpg
 featured: false
-placeholder: true
+placeholder: false
 placeholder_note: Starter post compiled from tips in the <a
   href="2026-04-15-12-hours-of-sebring-2026.html">12 Hours of Sebring 2026</a>
   write-up. Darien — expand it with your full gear list.
