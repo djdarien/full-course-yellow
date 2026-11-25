@@ -1,20 +1,17 @@
 ---
-title: "Race Weekend Camping Checklist (Starter)"
+title: Race Weekend Camping Checklist (Starter)
 date: 2026-10-16
-category: "Camping"
-excerpt: "Starter checklist built from the lessons in my Sebring write-up — camp kitchen, backup viewing spots, pacing, and more."
+category: Camping
+excerpt: >+
+  Starter checklist built from the lessons in my Sebring write-up — camp
+  kitchen, backup viewing spots, pacing, and more.
+
+image: /assets/img/nasa-sebring-2026-campsite.jpg
+featured: false
 placeholder: true
-placeholder_note: "Starter post compiled from tips in the <a href=\"2026-04-15-12-hours-of-sebring-2026.html\">12 Hours of Sebring 2026</a> write-up. Darien — expand it with your full gear list."
+placeholder_note: Starter post compiled from tips in the <a
+  href="2026-04-15-12-hours-of-sebring-2026.html">12 Hours of Sebring 2026</a>
+  write-up. Darien — expand it with your full gear list.
+draft: false
 ---
-<h3>From the Sebring weekend</h3>
-<ul>
-<li><strong>Camp stove, cooler full of ingredients, and a portable table.</strong> Cooking at camp turned every meal into quality time — breakfast burritos, grilled chicken with veggies and rice, pasta dinners, quick quesadillas.</li>
-<li><strong>Pick a camp spot wisely</strong> — easy access to the Fan Zone but far enough from the rowdiest areas to keep things peaceful.</li>
-<li><strong>Comfortable chairs and good shoes.</strong></li>
-<li><strong>Backup viewing spots picked in advance</strong> — a shaded grandstand, a grassy berm, and a “home mound.”</li>
-<li><strong>Shower the night before race day.</strong> Future-you will thank present-you.</li>
-<li><strong>Pace yourself</strong> — build in rest, shade, and easy food so a 12-hour day feels exciting instead of exhausting.</li>
-<li><strong>Have a traffic backup plan</strong> — crank the music and take the scenic route.</li>
-</ul>
-<h3>To add</h3>
-<p class="placeholder-note">[Placeholder] Tent / shade setup, power, water, and track-specific camping rules.</p>
+<p><strong>Sebring Camping Done Right: Quality Time, Easy Meals, and a 12-Hour Race That Doesn’t Break You</strong></p><p>Sebring weekends turn a camp stove, cooler, and portable table into the best part of the trip. Breakfast burritos in the morning, grilled chicken with veggies and rice after a long session, pasta dinners, and quick quesadillas between on-track activity keep everyone fueled without leaving the site. The goal is simple: easy access to the Fan Zone, enough distance from the loudest camps to stay peaceful, and a setup that lets a long race day feel exciting instead of exhausting.</p><p><strong>Pick the Spot First</strong></p><p>Arrive with a plan. Green Park and the general infield areas are first-come, first-served. Look for easy walking distance to the Fan Zone (jumbotron, vendors, atmosphere) while staying clear of the densest party clusters. A spot near the edge of a camping area or closer to quieter sections often works better than the absolute middle of the action. Note the new pedestrian bridge over the Ulmann Straight for quicker track access from parking/camping zones.</p><p><strong>Tent, Shade, Power &amp; Water</strong></p><ul><li><p><strong>Tent &amp; shade</strong>: Bring a solid tent plus extra canopies or tarps. Florida sun is relentless; shade is non-negotiable. Concrete blocks are sometimes available from the track for securing canopies—ask in advance. No campfires of any kind.</p></li><li><p><strong>Power</strong>: Shore power is limited and mostly in designated RV areas (fees apply, first-come in many spots). Plan on battery packs, a quiet inverter/generator if allowed in your zone, or simply minimizing power needs. Race teams get priority on paddock power.</p></li><li><p><strong>Water</strong>: Hookups are scarce. Fill jugs or a cooler before arrival. Showers are available in Green Park, Midway, and paddock areas—use them. No dump station on property; plan accordingly or arrange external service.</p></li><li><p><strong>Rules to know</strong>: Tent camping is generally free with a ticket in permitted areas. Don’t rope off large spaces for late arrivals. Quiet hours after ~11 pm are expected. Check current event maps and notes for your specific weekend (IMSA, SVRA, etc.), as details shift.</p></li></ul><p><strong>Camp Kitchen That Actually Works</strong></p><p>Keep it simple and high-quality:</p><ul><li><p>Breakfast burritos (pre-prepped fillings)</p></li><li><p>Grilled chicken, veggies, and rice</p></li><li><p>Pasta dinners</p></li><li><p>Quick quesadillas</p></li></ul><p>A portable table, camp stove, and well-packed cooler turn every meal into sitting-around time instead of another line at a vendor. Prep as much as possible the night before.</p><p><strong>Comfort Basics</strong></p><p>Comfortable chairs (the free ones get old fast) and good walking shoes are essential. A 12-hour day on concrete and grass adds up. Have a “home mound” or base camp you can return to for shade and rest.</p><p><strong>Viewing Spots &amp; Backup Plans</strong></p><p>Scout three options in advance:</p><ul><li><p>A shaded grandstand seat</p></li><li><p>A grassy berm with a good sightline</p></li><li><p>Your home mound / camp-side viewing</p></li></ul><p>The Fan Zone is convenient, but rotating spots keeps the day fresh. Bring ear protection if you’re trackside for long stretches.</p><p><strong>Pace Yourself</strong></p><p>Build in rest, shade, and easy food. A full race day is long; treat it like an event, not a marathon. Shower the night before race day—future-you will thank present-you. Hydrate constantly and step away from the noise when needed.</p><p><strong>Traffic &amp; Exit</strong></p><p>Have a backup route. Crank the music and take the scenic way if the main exits clog. Arriving early and leaving with a plan (or after the worst of the rush) makes the whole weekend smoother.</p><p>A little preparation turns Sebring camping from endurance into the best part of the weekend: good food, comfortable setup, easy track access, and actual downtime between the action. Pack the stove, choose the spot wisely, and leave room to enjoy it.</p><p></p>
